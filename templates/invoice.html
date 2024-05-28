@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+</head>
+<body>
+    <h1>Invoice</h1>
+    <p>Order ID: {{ invoice.order_id }}</p>
+    <p>Customer Name: {{ invoice.customer_name }}</p>
+    <p>Customer Contact: {{ invoice.customer_contact }}</p>
+    <p>Invoice Date: {{ invoice.invoice_date }}</p>
+    <p>Total Amount: ${{ invoice.total_amount }}</p>
+    <h2>Items</h2>
+    <ul>
+        {% for item in invoice.items %}
+        <li>{{ item['item'] }} - Quantity: {{ item['quantity'] }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Payment</h2>
+    <form action="/process_payment" method="POST">
+        <input type="hidden" name="order_id" value="{{ invoice.order_id }}">
+        <button type="submit" name="payment_method" value="cash">Pay with Cash</button>
+        <button type="submit" name="payment_method" value="card">Pay with Card</button>
+    </form>
+    <a href="javascript:history.back()">Back to Previous Page</a>
+</body>
+</html>

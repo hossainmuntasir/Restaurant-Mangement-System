@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Most Ordered Items</title>
+</head>
+<body>
+    <h1>Most Ordered Items</h1>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Quantity Ordered</th>
+        </tr>
+        {% for item, quantity in most_ordered_items %}
+        <tr>
+            <td>{{ item }}</td>
+            <td>{{ quantity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="javascript:history.back()">Back to Previous Page</a>
+</body>
+</html>

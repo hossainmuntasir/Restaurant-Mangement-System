@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Page</title>
+    <script>
+        function calculateTotal() {
+            let total = 0;
+            const items = document.querySelectorAll('#menu_items div');
+            items.forEach((item, index) => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                const quantity = item.querySelector('input[name="quantity"]');
+                const price = parseFloat(item.querySelector('input[type="hidden"]').value);
+                
+                if (checkbox.checked) {
+                    total += price * parseInt(quantity.value);
+                }
+            });
+            document.getElementById('total_amount').innerText = 'Total Amount: $' + total.toFixed(2);
+            document.getElementById('total_amount_input').value = total.toFixed(2);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('input[type="checkbox"], input[name="quantity"]').forEach(input => {
+                input.addEventListener('change', calculateTotal);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Take Order</h1>
+    <form action="/submit_order" method="POST">
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" id="customer_name" name="customer_name" required><br>
+
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" required><br>
+
+        <label for="table_no">Table No:</label>
+        <input type="text" id="table_no" name="table_no" required><br>
+
+        <h3>Order Items:</h3>
+        <div id="menu_items">
+            {% for item in menu %}
+                <div>
+                    <input type="checkbox" name="item" value="{{ item['item'] }}" onchange="calculateTotal()">{{ item['item'] }} - ${{ item['price'] }}
+                    <input type="hidden" name="price_{{ loop.index0 }}" value="{{ item['price'] }}">
+                    <input type="number" name="quantity" min="1" value="1" onchange="calculateTotal()">
+                </div>
+            {% endfor %}
+        </div>
+
+        <h3 id="total_amount">Total Amount: $0.00</h3>
+        <input type="hidden" id="total_amount_input" name="total_amount" value="0.00">
+
+        <button type="submit">Submit Order</button>
+    </form>
+    <a href="javascript:history.back()">Back to Previous Page</a>
+</body>
+</html>

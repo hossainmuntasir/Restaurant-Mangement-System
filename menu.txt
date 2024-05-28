@@ -1,0 +1,12 @@
+Pizza,13.99
+Salad,7.99
+Pasta,11.99
+Soda,2.99
+Water,1.99
+Steak,25.99
+Fries,3.99
+Coke,3.99
+Burger,15.99
+Biriyani,19.99
+Faluda,6.99
+Test,9.99

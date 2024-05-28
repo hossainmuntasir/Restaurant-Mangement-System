@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Menu Item</title>
+</head>
+<body>
+    <h1>Edit Menu Item</h1>
+    <form action="/edit_menu_item/{{ item.item }}" method="POST">
+        <label for="new_item">Item Name:</label>
+        <input type="text" id="new_item" name="new_item" value="{{ item.item }}" required><br>
+        <label for="new_price">Price:</label>
+        <input type="number" id="new_price" name="new_price" step="0.01" value="{{ item.price }}" required><br>
+        <button type="submit">Update Item</button>
+    </form>
+    <a href="/manage_menu">Back to Manage Menu</a>
+</body>
+</html>
