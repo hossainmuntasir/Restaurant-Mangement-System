@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 ORDERS_FILE = 'orders.txt'
 
@@ -17,12 +18,14 @@ class Menu:
         return menu
 
 class Order:
-    def __init__(self, customer_name, contact, table_no):
+    def __init__(self, customer_name, contact, order_type, address=None):
         self.customer_name = customer_name
         self.contact = contact
-        self.table_no = table_no
+        self.order_type = order_type
+        self.address = address
         self.items = []
         self.total_amount = 0.0
+        self.order_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     def add_item(self, item, quantity, price):
         self.items.append({'item': item, 'quantity': quantity, 'price': price})
@@ -36,9 +39,11 @@ class Order:
         return {
             'customer_name': self.customer_name,
             'contact': self.contact,
-            'table_no': self.table_no,
+            'order_type': self.order_type,
+            'address': self.address,
             'items': items_str,
-            'total_amount': self.total_amount
+            'total_amount': self.total_amount,
+            'order_date': self.order_date
         }
 
 class OrderManager:
@@ -48,7 +53,7 @@ class OrderManager:
     def save_order(self, order):
         with open(self.filename, 'a') as f:
             items_str = order['items']
-            order_data = f"{order['customer_name']},{order['contact']},{order['table_no']},{order['total_amount']:.2f},{items_str}\n"
+            order_data = f"{order['customer_name']},{order['contact']},{order['order_type']},{order['address']},{order['total_amount']:.2f},{items_str},{order['order_date']}\n"
             f.write(order_data)
 
     def read_orders(self):
@@ -58,17 +63,19 @@ class OrderManager:
                 for line in f:
                     try:
                         data = line.strip().split(',')
-                        if len(data) < 5:
+                        if len(data) < 7:
                             print(f"Skipping invalid line: {line}")
                             continue  # Skip invalid lines
-                        items_str = data[4]
-                        items = [{'item': item.split('(')[0], 'quantity': int(item.split('(')[1][:-1])} for item in items_str.split(';')]
+                        items_str = data[5]
+                        items = [{'item': item.split('(')[0], 'quantity': int(item.split('(')[1].strip(')'))} for item in items_str.split(';')]
                         order = {
                             'customer_name': data[0],
                             'contact': data[1],
-                            'table_no': data[2],
+                            'order_type': data[2],
+                            'address': data[3],
                             'items': items,
-                            'total_amount': float(data[3])
+                            'total_amount': float(data[4]),
+                            'order_date': data[6]
                         }
                         orders.append(order)
                     except (IndexError, ValueError) as e:

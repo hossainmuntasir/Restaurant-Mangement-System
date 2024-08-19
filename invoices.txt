@@ -1,74 +1,26 @@
-muntas,0410324500,Pizza(1);Salad(1),20.98,pending,2024-05-24 17:54:26
-muntas,0410324500,Pizza(1);Salad(1),20.98,paid,2024-05-24 17:54:33
-muntas,0410324500,Pizza(1);Salad(1),20.98,paid,2024-05-24 17:54:38
-muntas,0410324500,Pizza(1);Salad(1),20.98,paid,2024-05-24 17:56:19
-muntas,0410324500,Pizza(1);Salad(1),20.98,paid,2024-05-24 17:59:45
-muntas,0410324500,Pizza(1);Salad(1),20.98,pending,2024-05-24 17:59:51
-muntas,0410324500,Pizza(1);Salad(1),20.98,paid,2024-05-24 17:59:53
-Bibi Fatema,0410324500,Soda(1),12.99,pending,2024-05-24 18:09:35
-Bibi Fatema,0410324500,Soda(1),12.99,paid,2024-05-24 18:09:38
-Bibi Fatema,0410324500,Soda(1),12.99,paid,2024-05-24 18:09:44
-Bibi Fatema,0410324500,Soda(1),12.99,paid,2024-05-24 18:12:17
-araf,0410324500,Pizza(2);Soda(1);Fries(1),45.96,pending,2024-05-24 19:55:24
-araf,0410324500,Pizza(2);Soda(1);Fries(1),45.96,paid,2024-05-24 19:55:36
-Bibi Fatema,01711204134,Pizza(1);Water(1);Steak(1),33.97,pending,2024-05-25 00:03:54
-araf,0410324500,Pizza(1);Salad(1);Pasta(1);Soda(1);Water(1);Steak(1);Fries(1);Coke(1);Burger(1),88.90999999999998,pending,2024-05-25 00:04:21
-araf,0410324500,Pizza(2);Soda(1);Fries(1),45.96,paid,2024-05-25 00:04:32
-Bibi Fatema,01711204134,Pizza(1);Salad(1);Pasta(1);Soda(1);Water(1);Steak(1);Fries(1);Coke(1);Burger(1),88.90999999999998,pending,2024-05-25 00:06:51
-Bibi Fatema,Bibi Fatema,Pizza(1);Salad(1);Pasta(1);Soda(1);Steak(1),38.95,pending,2024-05-25 00:20:35
-Bibi Fatema,0410324500,Soda(1),12.99,paid,2024-05-25 00:22:01
-2d8b0054-f96a-4a67-bbc4-525cd2a4cd4e,test,Pizza(1);Steak(1);Fries(1);Burger(1),36.96,pending,2024-05-25 00:27:28
-2d8b0054-f96a-4a67-bbc4-525cd2a4cd4e,test,Pizza(1);Steak(1);Fries(1);Burger(1),36.96,paid,2024-05-25 00:27:28
-1000,Test,85725,Soda(1);Water(1);Steak(1),33.97,pending,2024-05-25 00:38:34
-1001,Test,85725,Soda(1);Water(1);Steak(1),33.97,pending,2024-05-25 00:42:18
-1001,Test,85725,Soda(1);Water(1);Steak(1),33.97,paid,2024-05-25 00:42:18
-1002,test2,1002,Fries(1);Coke(1);Burger(1),33.97,pending,2024-05-25 00:42:50
-1002,test2,1002,Fries(1);Coke(1);Burger(1),33.97,paid,2024-05-25 00:42:50
-1002,test2,1002,Fries(1);Coke(1);Burger(1),33.97,paid,2024-05-25 00:42:50
-1002,test2,1002,Fries(1);Coke(1);Burger(1),33.97,paid,2024-05-25 00:42:50
-1002,test2,1002,Fries(1);Coke(1);Burger(1),33.97,paid,2024-05-25 00:42:50
-1006,test,85725,Salad(1),13.99,pending,2024-05-25 01:33:37
-1006,test,85725,Salad(1),13.99,paid,2024-05-25 01:33:37
-1007,Asif,0410324500,Pizza(3),41.97,pending,2024-05-25 02:00:44
-1007,Asif,0410324500,Pizza(3),41.97,paid,2024-05-25 02:00:44
-1007,Asif,0410324500,Pizza(3),41.97,paid,2024-05-25 02:00:44
-1008,Miad,01712192612,Pizza(10);Pasta(1);Water(1);Steak(1),162.87000000000003,pending,2024-05-27 17:57:29
-1008,Miad,01712192612,Pizza(10);Pasta(1);Water(1);Steak(1),162.87000000000003,paid,2024-05-27 17:57:29
-1009,test,1002,Pasta(1),13.99,pending,2024-05-27 18:02:33
-1009,test,1002,Pasta(1),13.99,paid,2024-05-27 18:02:33
-1010,Nahid chodu,012,Pizza(1);Salad(1);Steak(1),33.97,pending,2024-05-27 19:53:45
-1010,Nahid chodu,012,Pizza(1);Salad(1);Steak(1),33.97,paid,2024-05-27 19:53:45
-1011,Ali,01711204134,Pizza(3);Steak(1),49.96,pending,2024-05-27 20:40:46
-1011,Ali,01711204134,Pizza(3);Steak(1),49.96,paid,2024-05-27 20:40:46
-1012,ali,01711204134,Salad(1),13.99,pending,2024-05-28 19:53:54
-1013,Bibi Fatema,85725,Pizza(1),13.99,pending,2024-05-28 19:58:02
-1013,Bibi Fatema,85725,Pizza(1),13.99,paid,2024-05-28 19:58:02
-1016,test,01711204134,Soda(1);Water(1),21.98,pending,2024-05-28 20:04:26
-1017,mi,85725,Pasta(1);Water(1),21.98,pending,2024-05-28 20:11:44
-1017,mi,85725,Pasta(1);Water(1),21.98,paid,2024-05-28 20:11:44
-1018,mi,85725,Pasta(1);Water(1),21.98,pending,2024-05-28 20:16:52
-1019,hossain,01711204134,Pizza(1),13.99,pending,2024-05-28 20:47:32
-1019,hossain,01711204134,Pizza(1),13.99,paid,2024-05-28 20:47:32
-1021,hossain,01711204134,Pizza(10),0.0,pending,2024-05-28 20:56:49
-1021,hossain,01711204134,Pizza(10),0.0,paid,2024-05-28 20:56:49
-1022,Mosh,1234,Salad(1);Steak(1);Fries(1),33.97,pending,2024-05-28 20:57:59
-1022,Mosh,1234,Salad(1);Steak(1);Fries(1),33.97,paid,2024-05-28 20:57:59
-1023,ajfhskfa,45222,Pizza(1),0.0,pending,2024-05-28 21:01:17
-1023,ajfhskfa,45222,Pizza(1),0.0,paid,2024-05-28 21:01:17
-1024,hossain,01711204134,Pizza(1),0.0,pending,2024-05-28 21:03:21
-1025,muntas,01711204134,Pizza(1),13.99,N/A,pending,2024-05-28 21:15:47
-1026,Bibi Fatema,01711204134,Pizza(1),13.99,N/A,pending,2024-05-28 21:30:53
-1027,Bibi Fatema,85725,dine-in,Faluda(1),13.99,pending,2024-05-28 21:56:54
-1028,test,85725,dine-in,Biriyani(1);Faluda(1),21.98,pending,2024-05-28 21:58:19
-1027,test,85725,Biriyani(1);Faluda(1),21.98,,pending,2024-05-28 22:09:29
-1028,Bibi Fatema,85725,Biriyani(1);Faluda(1),21.98,,pending,2024-05-28 22:09:50
-1,Bibi Fatema,85725,dine-in,,21.98,Biriyani(1);Faluda(1),pending,2024-05-28 22:13:48
-1,Bibi Fatema,85725,dine-in,,21.98,Biriyani(1);Faluda(1),paid,2024-05-28 22:13:48
-2,muntas,0410324500,dine-in,,21.98,Fries(1);Coke(1),pending,2024-05-28 22:22:48
-2,muntas,0410324500,dine-in,,21.98,Fries(1);Coke(1),paid,2024-05-28 22:22:48
-3,muntas,85725,pickup,,21.98,Steak(1);Fries(1),pending,2024-05-28 22:34:00
-3,muntas,85725,pickup,,21.98,Steak(1);Fries(1),paid,2024-05-28 22:34:00
-4,test,01711204134,dine-in,,21.98,Pizza(1);Steak(1),pending,2024-05-28 23:40:47
-4,test,01711204134,dine-in,,21.98,Pizza(1);Steak(1),paid,2024-05-28 23:40:47
-5,Bibi Fatema,0410324500,delivery,8/21 Glen Street,21.98,Pizza(1);Pasta(1),pending,2024-05-28 23:41:59
-5,Bibi Fatema,0410324500,delivery,8/21 Glen Street,21.98,Pizza(1);Pasta(1),paid,2024-05-28 23:41:59
+47,muntas,0410324500,pickup,,21.98,Pizza(1);Salad(1),paid,2024-05-30 01:19:54
+48,Bibi Fatema,0410324500,delivery,,21.98,Pizza(1);Salad(1),pending,2024-05-30 01:21:07
+49,hossain,0410324500,pickup,,13.99,Water(1),pending,2024-05-30 01:26:36
+49,hossain,0410324500,pickup,,13.99,Water(1),paid,2024-05-30 01:26:36
+50,hossain,01711204134,dine-in,,13.99,Water(1),pending,2024-05-30 01:26:59
+50,hossain,01711204134,dine-in,,13.99,Water(1),paid,2024-05-30 01:26:59
+51,Bibi Fatema,0410324500,delivery,,21.98,Salad(1);Pasta(1),pending,2024-05-30 01:52:49
+52,Bibi Fatema,0410324500,delivery,,21.98,Salad(1);Pasta(1),pending,2024-05-30 01:59:12
+52,Bibi Fatema,0410324500,delivery,,21.98,Salad(1);Pasta(1),paid,2024-05-30 01:59:12
+53,muntas,0410324500,dine-in,,21.98,Pizza(1);Pasta(1),pending,2024-05-30 02:08:03
+54,Bibi Fatema,85725,dine-in,,21.98,Water(1);Steak(1),pending,2024-05-30 02:08:46
+55,Bibi Fatema,0410324500,dine-in,,93.89,Pizza(1);Salad(10),pending,2024-05-30 02:35:53
+55,Bibi Fatema,0410324500,dine-in,,93.89,Pizza(1);Salad(10),paid,2024-05-30 02:35:53
+56,hossain,01711204134,delivery,,21.98,Pizza(1);Faluda(1),pending,2024-05-30 02:36:32
+57,hossain,01711204134,delivery,8/21 Glen Street, Hawthorn , VIC,21.98,Pizza(1);Faluda(1),pending,2024-05-30 02:36:49
+57,muntas,0410324500,delivery,8/21 Glen Street, Hawthorn , VIC,147.89,Pizza(10);Salad(1),pending,2024-05-30 02:37:12
+57,muntas,0410324500,delivery,8/21 Glen Street,147.89,Pizza(10);Salad(1),pending,2024-05-30 02:37:51
+57,muntas,0410324500,delivery,8/21 Glen Street,147.89,Pizza(10);Salad(1),paid,2024-05-30 02:37:51
+58,Bibi Fatema,01711204134,dine-in,,1406.99,Pizza(100);Salad(1),pending,2024-05-30 02:38:55
+58,Bibi Fatema,01711204134,dine-in,,1406.99,Pizza(100);Salad(1),paid,2024-05-30 02:38:55
+59,Bibi Fatema,0410324500,pickup,,46.91,Pizza(1);Salad(1);Pasta(1);Soda(1);Water(5),pending,2024-05-30 02:39:57
+59,Bibi Fatema,0410324500,pickup,,46.91,Pizza(1);Salad(1);Pasta(1);Soda(1);Water(5),paid,2024-05-30 02:39:57
+60,Bibi Fatema,01711204134,dine-in,,33.97,Pizza(1);Salad(1);Pasta(1),pending,2024-05-31 21:52:54
+60,Bibi Fatema,01711204134,dine-in,,33.97,Pizza(1);Salad(1);Pasta(1),paid,2024-05-31 21:52:54
+61,Hossain ,0410324500,delivery,8/21 Glen Street,33.97,Pizza(1);Salad(1);Steak(1),pending,2024-05-31 21:59:18
+61,Hossain ,0410324500,delivery,8/21 Glen Street,33.97,Pizza(1);Salad(1);Steak(1),paid,2024-05-31 21:59:18

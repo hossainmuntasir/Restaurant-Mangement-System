@@ -5,7 +5,6 @@ from manage_menu import MenuManager
 from invoice import Invoice
 from payment import Payment
 from analytics import Analytics
-from online_ordering import OnlineOrder, OnlineOrderManager
 
 app = Flask(__name__)
 
@@ -14,7 +13,6 @@ order_manager = OrderManager('orders.txt')
 tables = Table.read_tables('tables.txt')
 reservation_manager = ReservationManager('reservations.txt')
 analytics = Analytics('orders.txt')
-online_order_manager = OnlineOrderManager('online_orders.txt')
 
 @app.route('/')
 def index():
@@ -40,18 +38,21 @@ def staff_home():
 
 @app.route('/order')
 def order_page():
-    current_menu = menu_manager.read_menu()  # Ensure the menu is up-to-date
+    current_menu = menu_manager.read_menu()
     return render_template('order.html', menu=current_menu)
 
 @app.route('/submit_order', methods=['POST'])
 def submit_order():
     customer_name = request.form['customer_name']
     contact = request.form['contact']
-    table_no = request.form['table_no']
-    items = request.form.getlist('item')
-    quantities = request.form.getlist('quantity')
+    order_type = request.form['order_type']
+    table_no = request.form.get('table_no', '')
+    address = request.form.get('address', '')
 
-    order = Order(customer_name, contact, table_no)
+    items = request.form.getlist('item')
+    quantities = request.form.getlist('quantity[]')
+
+    order = Order(customer_name, contact, order_type, table_no if order_type == 'dine-in' else address)
 
     for i, item in enumerate(items):
         quantity = int(quantities[i])
@@ -61,14 +62,13 @@ def submit_order():
     order.calculate_total()
     order_manager.save_order(order.get_order_data())
 
-    # Generate unique order ID for the invoice
     order_id = Invoice.get_next_invoice_id()
-    invoice = Invoice(order_id, order.customer_name, order.contact, order.items, order.total_amount, 'dine-in')
+    invoice = Invoice(order_id, order.customer_name, order.contact, order.items, order.total_amount, order_type, address)
     Invoice.save_invoice(invoice.get_invoice_data())
 
-    # Update analytics
     analytics.analyze_orders()
     return redirect(url_for('show_invoice', order_id=order_id))
+
 
 @app.route('/invoice/<order_id>')
 def show_invoice(order_id):
@@ -85,7 +85,7 @@ def process_payment():
     invoices = Invoice.read_invoices()
     invoice = next((inv for inv in invoices if inv.order_id == str(order_id)), None)
     if invoice and Payment.process_payment(invoice, payment_method):
-        Invoice.save_invoice(invoice.get_invoice_data())  # Update the invoice status to paid
+        Invoice.save_invoice(invoice.get_invoice_data())
         return render_template('payment_success.html')
     return "Payment failed", 400
 
@@ -121,7 +121,7 @@ def submit_reservation():
 
 @app.route('/manage_menu')
 def manage_menu_page():
-    current_menu = menu_manager.read_menu()  # Ensure the menu is up-to-date
+    current_menu = menu_manager.read_menu()
     return render_template('manage_menu.html', menu=current_menu)
 
 @app.route('/add_menu_item', methods=['POST'])
@@ -173,58 +173,41 @@ def analytics_page():
     most_ordered_items = analytics.analyze_orders()
     return render_template('analytics.html', most_ordered_items=most_ordered_items)
 
-@app.route('/online_order')
+@app.route('/order')
 def online_order_page():
     current_menu = menu_manager.read_menu()
-    return render_template('online_order.html', menu=current_menu)
+    return render_template('order.html', menu=current_menu)
 
-@app.route('/submit_online_order', methods=['POST'])
-def submit_online_order():
-    customer_name = request.form['customer_name']
-    contact = request.form['contact']
-    order_type = request.form['order_type']
-    address = request.form['address'] if order_type == 'delivery' else None
-    items = request.form.getlist('item')
-    quantities = request.form.getlist('quantity')
+# @app.route('/submit_online_order', methods=['POST'])
+# def submit_online_order():
+#     customer_name = request.form['customer_name']
+#     contact = request.form['contact']
+#     order_type = request.form['order_type']
+#     address = request.form['address'] if order_type == 'delivery' else None
+#     items = request.form.getlist('item')
+#     quantities = request.form.getlist('quantity')
 
-    # Generate unique order ID for the online order
-    order_id = Invoice.get_next_invoice_id()
-    online_order = OnlineOrder(order_id, customer_name, contact, order_type, address)
+#     order_id = Invoice.get_next_invoice_id()
+#     order = Order(customer_name, contact, order_type, address)
 
-    for i, item in enumerate(items):
-        quantity = int(quantities[i])
-        price = float(request.form[f'price_{i+1}'])
-        online_order.add_item(item, quantity, price)
+#     for i, item in enumerate(items):
+#         quantity = int(quantities[i])
+#         price = float(request.form[f'price_{i+1}'])
+#         order.add_item(item, quantity, price)
 
-    online_order.calculate_total()
-    online_order_manager.save_order(online_order.get_order_data())
+#     order.calculate_total()
+#     order_manager.save_order(order.get_order_data())
 
-    # Generate invoice
-    invoice = Invoice(order_id, online_order.customer_name, online_order.contact, online_order.items, online_order.total_amount, order_type, address)
-    Invoice.save_invoice(invoice.get_invoice_data())
+#     invoice = Invoice(order_id, order.customer_name, order.contact, order.items, order.total_amount, order_type, address)
+#     Invoice.save_invoice(invoice.get_invoice_data())
 
-    # Update analytics
-    analytics.analyze_orders()
-    return redirect(url_for('show_online_invoice', order_id=order_id))
+#     analytics.analyze_orders()
+#     return redirect(url_for('show_invoice', order_id=order_id))
 
-@app.route('/online_invoice/<order_id>')
-def show_online_invoice(order_id):
-    invoices = Invoice.read_invoices()
-    invoice = next((inv for inv in invoices if inv.order_id == str(order_id)), None)
-    if invoice:
-        return render_template('online_invoice.html', invoice=invoice)
-    return "Invoice not found", 404
-
-@app.route('/process_online_payment', methods=['POST'])
-def process_online_payment():
-    order_id = request.form['order_id']
-    payment_method = request.form['payment_method']
-    invoices = Invoice.read_invoices()
-    invoice = next((inv for inv in invoices if inv.order_id == str(order_id)), None)
-    if invoice and Payment.process_payment(invoice, payment_method):
-        Invoice.save_invoice(invoice.get_invoice_data())  # Update the invoice status to paid
-        return render_template('payment_success.html')
-    return "Payment failed", 400
+@app.route('/view_menu')
+def view_menu():
+    current_menu = menu_manager.read_menu()
+    return render_template('view_menu.html', menu=current_menu)
 
 if __name__ == '__main__':
     app.run(debug=True)

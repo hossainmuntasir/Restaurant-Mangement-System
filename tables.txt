@@ -1,4 +1,4 @@
-1,4,available
+1,4,reserved
 2,4,reserved
 3,2,available
 4,2,available

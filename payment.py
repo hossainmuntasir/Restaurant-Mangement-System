@@ -1,5 +1,6 @@
 from datetime import datetime
 import os
+
 PAYMENT_FILE = 'payments.txt'
 
 class Payment:

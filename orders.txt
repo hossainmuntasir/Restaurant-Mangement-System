@@ -1,38 +1,25 @@
-hossain,0410324500,7,20.98,Water:1,Burger:1
-Bibi Fatema,01711204134,4,45.96,Pizza:2,Water:1,Steak:1
-muntas,0410324500,8,20.98,Pizza:1,Salad:1
-muntas,0410324500,8,20.98,Pizza:1,Salad:1
-Bibi Fatema,0410324500,7,12.99,Soda:1
-araf,0410324500,9,45.96,Pizza:2,Soda:1,Fries:1
-Bibi Fatema,01711204134,8,33.97,Pizza:1,Water:1,Steak:1
-araf,0410324500,8,88.91,Pizza:1,Salad:1,Pasta:1,Soda:1,Water:1,Steak:1,Fries:1,Coke:1,Burger:1
-Bibi Fatema,01711204134,4,88.91,Pizza:1,Salad:1,Pasta:1,Soda:1,Water:1,Steak:1,Fries:1,Coke:1,Burger:1
-Bibi Fatema,gfgflgjsd,8,38.95,Pizza(1);Salad(1);Pasta(1);Soda(1);Steak(1)
-test,123798456,99,36.96,Pizza(1);Steak(1);Fries(1);Burger(1)
-Test,85725,99,33.97,Soda(1);Water(1);Steak(1)
-Test,85725,99,33.97,Soda(1);Water(1);Steak(1)
-test2,1002,98,33.97,Fries(1);Coke(1);Burger(1)
-Asif,0410324500,8,41.97,Pizza(3)
-Miad,01712192612,1,162.87,Pizza(10);Pasta(1);Water(1);Steak(1)
-Nahid chodu,012,1,33.97,Pizza(1);Salad(1);Steak(1)
-Ali,01711204134,7,49.96,Pizza(3);Steak(1)
-Bibi Fatema,85725,99,13.99,Pizza(1)
-hossain,01711204134,1,13.99,Pizza(1)
-hossain,01711204134,N/A,0.00,Pizza(10)
-Mosh,1234,1,33.97,Salad(1);Steak(1);Fries(1)
-ajfhskfa,45222,8/21 Glen Street, Hawthorn , VIC,0.00,Pizza(1)
-hossain,01711204134,,0.00,Pizza(1)
-muntas,01711204134,02,13.99,Pizza(1)
-Bibi Fatema,01711204134,1,13.99,Pizza(1)
-Bibi Fatema,01711204134,8/21 Glen Street, Hawthorn , VIC,0.00,Pizza(1)
-muntas,01711204134,1,13.99,Pizza(1)
-Bibi Fatema,85725,Unit 8,0.00,Pizza(1)
-Bibi Fatema,85725,1,13.99,Faluda(1)
-test,85725,2,21.98,Biriyani(1);Faluda(1)
-test,85725,2,21.98,Biriyani(1);Faluda(1)
-test,85725,2,21.98,Biriyani(1);Faluda(1)
-test,85725,2,21.98,Biriyani(1);Faluda(1)
-Bibi Fatema,85725,1,21.98,Biriyani(1);Faluda(1)
-Bibi Fatema,85725,1,21.98,Biriyani(1);Faluda(1)
-muntas,0410324500,1,21.98,Fries(1);Coke(1)
-test,01711204134,8,21.98,Pizza(1);Steak(1)
+Bibi Fatema,85725,dine-in,,33.97,Pizza(1);Salad(1);Pasta(1),2024-05-30 00:54:47
+Bibi Fatema,0410324500,dine-in,,36.96,Pizza(1);Salad(1);Pasta(1);Soda(1),2024-05-30 00:55:17
+hossain,01711204134,dine-in,,21.98,Pizza(1);Salad(1),2024-05-30 00:55:47
+Bibi Fatema,0410324500,dine-in,,21.98,Pizza(1);Salad(1),2024-05-30 00:56:31
+hossain,01711204134,dine-in,,21.98,Pizza(1);Salad(1),2024-05-30 01:05:35
+Bibi Fatema,0410324500,dine-in,,21.98,Pizza(1);Salad(1),2024-05-30 01:08:22
+hossain,01711204134,dine-in,,21.98,Pizza(1);Salad(1),2024-05-30 01:10:11
+muntas,0410324500,dine-in,,21.98,Pizza(1);Salad(1),2024-05-30 01:10:36
+muntas,0410324500,pickup,,21.98,Pizza(1);Salad(1),2024-05-30 01:19:54
+Bibi Fatema,0410324500,delivery,,21.98,Pizza(1);Salad(1),2024-05-30 01:21:07
+hossain,0410324500,pickup,,13.99,Water(1),2024-05-30 01:26:36
+hossain,01711204134,dine-in,,13.99,Water(1),2024-05-30 01:26:59
+Bibi Fatema,0410324500,delivery,,21.98,Salad(1);Pasta(1),2024-05-30 01:52:49
+Bibi Fatema,0410324500,delivery,,21.98,Salad(1);Pasta(1),2024-05-30 01:59:12
+muntas,0410324500,dine-in,,21.98,Pizza(1);Pasta(1),2024-05-30 02:08:03
+Bibi Fatema,85725,dine-in,,21.98,Water(1);Steak(1),2024-05-30 02:08:46
+Bibi Fatema,0410324500,dine-in,,93.89,Pizza(1);Salad(10),2024-05-30 02:35:53
+hossain,01711204134,delivery,,21.98,Pizza(1);Faluda(1),2024-05-30 02:36:32
+hossain,01711204134,delivery,8/21 Glen Street, Hawthorn , VIC,21.98,Pizza(1);Faluda(1),2024-05-30 02:36:49
+muntas,0410324500,delivery,8/21 Glen Street, Hawthorn , VIC,147.89,Pizza(10);Salad(1),2024-05-30 02:37:12
+muntas,0410324500,delivery,8/21 Glen Street,147.89,Pizza(10);Salad(1),2024-05-30 02:37:51
+Bibi Fatema,01711204134,dine-in,,1406.99,Pizza(100);Salad(1),2024-05-30 02:38:55
+Bibi Fatema,0410324500,pickup,,46.91,Pizza(1);Salad(1);Pasta(1);Soda(1);Water(5),2024-05-30 02:39:57
+Bibi Fatema,01711204134,dine-in,,33.97,Pizza(1);Salad(1);Pasta(1),2024-05-31 21:52:54
+Hossain ,0410324500,delivery,8/21 Glen Street,33.97,Pizza(1);Salad(1);Steak(1),2024-05-31 21:59:18

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
                 const checkbox = item.querySelector('input[type="checkbox"]');
                 const quantity = item.querySelector('input[name="quantity"]');
                 const price = parseFloat(item.querySelector('input[type="hidden"]').value);
-                
+
                 if (checkbox.checked) {
                     total += price * parseInt(quantity.value);
                 }
@@ -28,7 +28,7 @@
     </script>
 </head>
 <body>
-    <h1>Take Order</h1>
+    <h1>Place an Order</h1>
     <form action="/submit_order" method="POST">
         <label for="customer_name">Customer Name:</label>
         <input type="text" id="customer_name" name="customer_name" required><br>
@@ -36,8 +36,22 @@
         <label for="contact">Contact:</label>
         <input type="text" id="contact" name="contact" required><br>
 
-        <label for="table_no">Table No:</label>
-        <input type="text" id="table_no" name="table_no" required><br>
+        <label for="order_type">Order Type:</label>
+        <select id="order_type" name="order_type" required>
+            <option value="dine-in">Dine-in</option>
+            <option value="pickup">Pickup</option>
+            <option value="delivery">Delivery</option>
+        </select><br>
+
+        <div id="table_no_field" style="display: none;">
+            <label for="table_no">Table No:</label>
+            <input type="text" id="table_no" name="table_no"><br>
+        </div>
+
+        <div id="address_field" style="display: none;">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address"><br>
+        </div>
 
         <h3>Order Items:</h3>
         <div id="menu_items">
@@ -56,5 +70,243 @@
         <button type="submit">Submit Order</button>
     </form>
     <a href="javascript:history.back()">Back to Previous Page</a>
+    <a href="/">Back to Home</a>
+
+    <script>
+        document.getElementById('order_type').addEventListener('change', function() {
+            var tableField = document.getElementById('table_no_field');
+            var addressField = document.getElementById('address_field');
+            if (this.value === 'dine-in') {
+                tableField.style.display = 'block';
+                addressField.style.display = 'none';
+            } else if (this.value === 'delivery') {
+                tableField.style.display = 'none';
+                addressField.style.display = 'block';
+            } else {
+                tableField.style.display = 'none';
+                addressField.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #495057;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], input[type="password"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        input[type="submit"], button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #ffffff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            color: #495057;
+            font-size: 18px;
+        }
+
+        h3 {
+            color: #343a40;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #total_amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        #status_message {
+            color: green;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        a {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        #menu_items div {
+            margin-bottom: 10px;
+        }
+
+        #menu_items input[type="number"] {
+            width: 60px;
+            margin-left: 10px;
+        }
+
+        #table_no_field, #address_field {
+            display: none;
+        }
+    </style>
+    <script>
+        function calculateTotal() {
+            let total = 0;
+            const items = document.querySelectorAll('#menu_items div');
+            items.forEach((item, index) => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                const quantity = item.querySelector('input[name="quantity[]"]');
+                const price = parseFloat(item.querySelector('input[type="hidden"]').value);
+
+                if (checkbox.checked) {
+                    total += price * parseInt(quantity.value);
+                }
+            });
+            document.getElementById('total_amount').innerText = 'Total Amount: $' + total.toFixed(2);
+            document.getElementById('total_amount_input').value = total.toFixed(2);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('input[type="checkbox"], input[name="quantity[]"]').forEach(input => {
+                input.addEventListener('change', calculateTotal);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Place an Order</h1>
+    <form action="/submit_order" method="POST">
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" id="customer_name" name="customer_name" required><br>
+
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" required><br>
+
+        <label for="order_type">Order Type:</label>
+        <select id="order_type" name="order_type" required>
+            <option value="dine-in">Dine-in</option>
+            <option value="pickup">Pickup</option>
+            <option value="delivery">Delivery</option>
+        </select><br>
+
+        <div id="table_no_field" style="display: none;">
+            <label for="table_no">Table No:</label>
+            <input type="text" id="table_no" name="table_no"><br>
+        </div>
+
+        <div id="address_field" style="display: none;">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address"><br>
+        </div>
+
+        <h3>Order Items:</h3>
+        <div id="menu_items">
+            {% for item in menu %}
+                <div>
+                    <input type="checkbox" name="item" value="{{ item['item'] }}" onchange="calculateTotal()">{{ item['item'] }} - ${{ item['price'] }}
+                    <input type="hidden" name="price_{{ loop.index0 }}" value="{{ item['price'] }}">
+                    <input type="number" name="quantity[]" min="1" value="1" onchange="calculateTotal()">
+                </div>
+            {% endfor %}
+        </div>
+
+        <h3 id="total_amount">Total Amount: $0.00</h3>
+        <input type="hidden" id="total_amount_input" name="total_amount" value="0.00">
+
+        <button type="submit">Submit Order</button>
+    </form>
+    <a href="javascript:history.back()">Back to Previous Page</a>
+    <a href="/">Back to Home</a>
+
+    <script>
+        document.getElementById('order_type').addEventListener('change', function() {
+            var tableField = document.getElementById('table_no_field');
+            var addressField = document.getElementById('address_field');
+            if (this.value === 'dine-in') {
+                tableField.style.display = 'block';
+                addressField.style.display = 'none';
+            } else if (this.value === 'delivery') {
+                tableField.style.display = 'none';
+                addressField.style.display = 'block';
+            } else {
+                tableField.style.display = 'none';
+                addressField.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
+

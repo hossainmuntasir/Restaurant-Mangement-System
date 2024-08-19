@@ -3,26 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #495057;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], input[type="password"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        input[type="submit"], button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #ffffff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            color: #495057;
+            font-size: 18px;
+        }
+
+        h3 {
+            color: #343a40;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #total_amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        #status_message {
+            color: green;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        a {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Invoice</h1>
-    <p>Order ID: {{ invoice.order_id }}</p>
-    <p>Customer Name: {{ invoice.customer_name }}</p>
-    <p>Customer Contact: {{ invoice.customer_contact }}</p>
-    <p>Invoice Date: {{ invoice.invoice_date }}</p>
-    <p>Total Amount: ${{ invoice.total_amount }}</p>
-    <h2>Items</h2>
+    <h1>Invoice #{{ invoice.order_id }}</h1>
+    <p><strong>Customer Name:</strong> {{ invoice.customer_name }}</p>
+    <p><strong>Contact:</strong> {{ invoice.contact }}</p>
+    <p><strong>Order Type:</strong> {{ invoice.order_type }}</p>
+    {% if invoice.address %}
+        <p><strong>Delivery Address:</strong> {{ invoice.address }}</p>
+    {% endif %}
+    <h2>Items:</h2>
     <ul>
         {% for item in invoice.items %}
-        <li>{{ item['item'] }} - Quantity: {{ item['quantity'] }}</li>
+            <li>{{ item['item'] }} (x{{ item['quantity'] }}) - ${{ item['price'] }}</li>
         {% endfor %}
     </ul>
-    <h2>Payment</h2>
+    <p><strong>Total Amount:</strong> ${{ invoice.total_amount }}</p>
+    <p><strong>Payment Status:</strong> {{ invoice.payment_status }}</p>
+    <p><strong>Invoice Date:</strong> {{ invoice.invoice_date }}</p>
+    
+    <h3>Make a Payment</h3>
     <form action="/process_payment" method="POST">
         <input type="hidden" name="order_id" value="{{ invoice.order_id }}">
-        <button type="submit" name="payment_method" value="cash">Pay with Cash</button>
-        <button type="submit" name="payment_method" value="card">Pay with Card</button>
+        <label for="payment_method">Select Payment Method:</label>
+        <select name="payment_method" id="payment_method" required>
+            <option value="cash">Cash</option>
+            <option value="card">Card</option>
+        </select>
+        <button type="submit">Pay Now</button>
     </form>
-    <a href="javascript:history.back()">Back to Previous Page</a>
+
+    <a href="/">Back to Home</a>
 </body>
 </html>
